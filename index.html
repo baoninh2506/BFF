@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <title>Eternal Love Journey • Dành Riêng Cho Em</title>
+  <title>Hành Trình Tình Bạn • 7 Năm Bên Nhau</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -26,22 +26,22 @@
       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
       <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
     </span>
-    <span id="audioTrackName">Nhạc kỷ niệm</span>
+    <span id="audioTrackName">Nhạc kỷ niệm tình bạn</span>
   </button>
   <audio id="backgroundMusic" src="music.mp3" preload="auto" loop></audio>
 
   <!-- =========================================================================
-       PHASE 1: BIOMETRIC SCANNER (MÀN HÌNH KHÓA VÂN TAY CÔNG NGHỆ CAO)
+       PHASE 1: FRIENDSHIP MEMORY ACCESS
   ========================================================================== -->
   <section id="phaseLock" class="fixed inset-0 z-40 flex flex-col items-center justify-between p-6 bg-gradient-to-b from-[#140511] via-[#090209] to-black transition-all duration-1000">
     <div class="w-full text-center pt-8">
       <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full glass-pill border border-pink-500/30 text-[11px] font-semibold tracking-widest text-pink-300 uppercase mb-3">
-        ✦ GỬI EM ✦
+        ✦ DÀNH TẶNG CẬU ✦
       </div>
       <h1 class="text-3xl sm:text-4xl font-cinematic font-bold tracking-wider glow-gold-text">
-        CON HEO HAY DỖI
+        TÌNH BẠN 7 NĂM
       </h1>
-      <p class="text-sm text-pink-200/70 mt-2 font-romantic text-xl">Nhấn Giữ Nút Để Xem Nha Bé</p>
+      <p class="text-sm text-pink-200/70 mt-2 font-romantic text-xl">Nhấn giữ nút để xem kỷ niệm nha bạn</p>
     </div>
 
     <!-- Center Fingerprint Scanner Target -->
@@ -62,33 +62,31 @@
         </defs>
       </svg>
 
-      <!-- Interactive Core Fingerprint Button -->
+      <!-- Interactive Friendship Button -->
       <div id="fingerprintBtn" class="absolute w-24 h-24 rounded-full glass-card flex flex-col items-center justify-center cursor-pointer border border-pink-400/60 shadow-[0_0_25px_rgba(255,42,112,0.4)] active:scale-95 transition-transform">
-        <svg class="w-12 h-12 text-pink-400 drop-shadow-[0_0_10px_rgba(255,42,112,0.8)]" fill="currentColor" viewBox="0 0 24 24">
-          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
+        <span class="text-5xl" aria-hidden="true">🤝</span>
       </div>
 
       <p id="lockStatusText" class="text-xs text-pink-300 font-medium tracking-widest uppercase mt-6 animate-pulse">
-        Chạm & giữ trái tim 1.5s
+        Chạm & giữ biểu tượng tình bạn 1.5s
       </p>
     </div>
 
     <!-- Footer Note -->
     <div class="text-center pb-6">
-      <p class="text-xs text-pink-400/60 font-romantic text-lg">“Bật loa to lên nha con heo”</p>
+      <p class="text-xs text-pink-400/60 font-romantic text-lg">“Bật loa để nghe nhạc và cùng xem kỷ niệm nhé!”</p>
     </div>
   </section>
 
   <!-- =========================================================================
-       PHASE 2: 3D CINEMATIC PHOTO JOURNEY + ROMANTIC PIANO
+       PHASE 2: 3D CINEMATIC FRIENDSHIP PHOTO JOURNEY
   ========================================================================== -->
   <section id="phaseGallery" class="fixed inset-0 z-30 flex flex-col justify-between p-5 opacity-0 pointer-events-none transition-opacity duration-1000">
     <!-- Top Progress Bar & Story Info -->
     <header class="w-full max-w-md mx-auto pt-2 z-30">
       <div class="flex items-center justify-between text-xs text-pink-200/80 mb-2">
-        <span class="font-cinematic tracking-wider text-amber-300">✦ CÔNG CHÚA NHỎ</span>
-        <span id="slideCounterText" class="font-mono text-pink-300">01 / 05</span>
+        <span class="font-cinematic tracking-wider text-amber-300">✦ TÌNH BẠN 7 NĂM ✦</span>
+        <span id="slideCounterText" class="font-mono text-pink-300">01 / 04</span>
       </div>
 
       <!-- Segmented Micro Progress Bars -->
@@ -107,19 +105,19 @@
     <!-- Gallery Controls & Skip to Letter -->
     <footer class="w-full max-w-md mx-auto pb-4 flex items-center justify-between z-30">
       <label for="customPhotoInput" class="glass-pill px-3 py-2 rounded-2xl text-[11px] text-pink-300 border border-pink-400/30 flex items-center gap-1 cursor-pointer active:scale-95 transition-transform">
-        <span>  ❤️ </span>
+        <span>📷</span>
         <input type="file" id="customPhotoInput" accept="image/*" multiple class="hidden">
       </label>
 
       <button id="btnSkipToLetter" class="glass-pill px-4 py-2 rounded-2xl text-xs font-semibold text-amber-200 border border-amber-400/40 flex items-center gap-1 active:scale-95 transition-transform shadow-lg shadow-amber-500/10">
-        <span> ❤️ </span>
+        <span>🤝</span>
         <span class="text-sm">→</span>
       </button>
     </footer>
   </section>
 
   <!-- =========================================================================
-       PHASE 3: ETERNAL LOVE LETTER & INTERACTIVE WORLD
+       PHASE 3: SEVEN-YEAR FRIENDSHIP MESSAGE
   ========================================================================== -->
   <section id="phaseLetter" class="fixed inset-0 z-20 flex flex-col p-4 opacity-0 pointer-events-none transition-all duration-1000 overflow-y-auto no-scrollbar">
     <div class="w-full max-w-md mx-auto flex flex-col gap-5 py-6">
@@ -127,18 +125,18 @@
       <!-- Header Celebration Badge -->
       <div class="text-center">
         <span class="inline-block px-4 py-1.5 rounded-full glass-pill border border-amber-400/30 text-[10px] tracking-widest text-amber-300 uppercase font-semibold">
-          ✦ THƯ TÌNH VĨNH CỬU ✦
+          ✦ KỶ NIỆM 7 NĂM TÌNH BẠN ✦
         </span>
         <h2 id="partnerNameTitle" class="text-3xl font-serif-lux font-bold glow-gold-text mt-2">
-          Gửi Em, Cả Thế Giới Của Anh
+          Gửi Cậu Võ Thanh Nhàn
         </h2>
-        <p class="text-xs text-pink-300/70 font-romantic text-lg">“Cảm ơn em vì đã đến và làm cuộc sống anh rực rỡ”</p>
+        <p class="text-xs text-pink-300/70 font-romantic text-lg">“Cảm ơn cậu đã cùng tớ viết nên thật nhiều kỷ niệm đẹp”</p>
       </div>
 
-      <!-- Realtime Love Counter Widget -->
+      <!-- Realtime Friendship Counter Widget -->
       <div class="glass-card rounded-3xl p-5 border border-pink-500/30 text-center relative overflow-hidden">
         <div class="absolute -top-10 -right-10 w-28 h-28 bg-pink-500/20 rounded-full blur-2xl"></div>
-        <p class="text-[11px] tracking-widest uppercase text-pink-300/80 font-bold mb-1">Chúng mình đã bên nhau</p>
+        <p class="text-[11px] tracking-widest uppercase text-pink-300/80 font-bold mb-1">Tình bạn của chúng mình đã kéo dài</p>
         
         <div class="flex items-center justify-center my-2">
           <span id="counterDays" class="text-5xl font-extrabold font-serif-lux text-transparent bg-clip-text bg-gradient-to-b from-white via-pink-100 to-rose-400 drop-shadow-[0_4px_16px_rgba(255,42,112,0.6)]">
@@ -163,15 +161,15 @@
         </div>
       </div>
 
-      <!-- Sacred Love Letter Scroll Container -->
+      <!-- Friendship Message -->
       <div class="glass-card rounded-3xl p-6 border border-amber-300/30 shadow-2xl relative">
         <div class="flex items-center justify-between pb-3 border-b border-white/10 mb-4">
           <div class="flex items-center gap-2">
             <span class="text-xl">💌</span>
-            <span class="text-xs font-bold tracking-wider uppercase text-amber-200">GỬI EM NGƯỜI CON GÁI ANH YÊU</span>
+            <span class="text-xs font-bold tracking-wider uppercase text-amber-200">GỬI CẬU VÕ THANH NHÀN</span>
           </div>
           <button id="btnEditLetterModal" class="text-[11px] glass-pill px-2.5 py-1 rounded-full text-pink-300 border border-pink-400/30 active:scale-95">
-      
+            ✏️
           </button>
         </div>
 
@@ -183,23 +181,23 @@
 
         <!-- Signature -->
         <div class="mt-6 pt-4 border-t border-white/10 flex justify-between items-center text-xs text-pink-300/80">
-          <span class="font-romantic text-lg">Mãi yêu công chúa của anh!</span>
-          <span class="text-amber-300 font-cinematic font-bold">FOREVER & ALWAYS</span>
+          <span class="font-romantic text-lg">Luôn trân trọng tình bạn này!</span>
+          <span class="text-amber-300 font-cinematic font-bold">BẠN THÂN MÃI NHÉ</span>
         </div>
       </div>
 
       <!-- Interactive Buttons -->
       <div class="flex flex-col gap-3 pb-8">
         <button id="btnHeartExplosion" class="w-full py-4 rounded-2xl bg-gradient-to-r from-pink-600 via-rose-500 to-amber-500 text-white font-bold text-sm shadow-[0_0_30px_rgba(255,42,112,0.4)] active:scale-95 transition-transform flex items-center justify-center gap-2">
-          <span>💖</span>
+          <span>🎉</span>
         </button>
 
         <div class="flex gap-2">
           <button id="btnReplayLetterType" class="flex-1 py-3 rounded-xl glass-pill text-xs font-semibold text-pink-200 border border-white/10 active:scale-95">
-            ↺ Đọc lại thư
+            ↺ Đọc lại lời nhắn
           </button>
           <button id="btnReplayAll" class="flex-1 py-3 rounded-xl glass-pill text-xs font-semibold text-amber-300 border border-amber-400/30 active:scale-95">
-            ⚡ Du hành lại từ đầu
+            ⚡ Xem lại kỷ niệm
           </button>
         </div>
       </div>
@@ -212,16 +210,16 @@
   ========================================================================== -->
   <div id="editLetterModal" class="fixed inset-0 z-50 bg-black/85 backdrop-blur-md hidden items-center justify-center p-4">
     <div class="glass-card w-full max-w-sm rounded-3xl p-6 border border-pink-500/40">
-      <h3 class="text-base font-bold text-white mb-2">Tuỳ Chỉnh Lời Muốn Gửi Gắm</h3>
-      <p class="text-xs text-pink-300/70 mb-4">Bạn có thể thay đổi tên và viết bức tâm thư theo cách riêng của mình.</p>
+      <h3 class="text-base font-bold text-white mb-2">Tuỳ chỉnh lời nhắn tình bạn</h3>
+      <p class="text-xs text-pink-300/70 mb-4">Bạn có thể thay đổi tên bạn thân và lời nhắn theo cách riêng của mình.</p>
 
       <div class="flex flex-col gap-3 mb-4">
         <div>
-          <label class="text-[11px] text-pink-300 font-semibold mb-1 block">Tên người yêu / Tiêu đề:</label>
+          <label class="text-[11px] text-pink-300 font-semibold mb-1 block">VÕ THANH NHÀN</label>
           <input type="text" id="inputPartnerName" class="w-full bg-pink-950/70 border border-pink-500/40 rounded-xl px-3 py-2 text-white text-xs focus:outline-none focus:border-amber-400">
         </div>
         <div>
-          <label class="text-[11px] text-pink-300 font-semibold mb-1 block">Nội dung bức thư:</label>
+          <label class="text-[11px] text-pink-300 font-semibold mb-1 block">Lời nhắn tình bạn:</label>
           <textarea id="inputTextLetter" rows="5" class="w-full bg-pink-950/70 border border-pink-500/40 rounded-xl p-3 text-white text-xs focus:outline-none focus:border-amber-400 leading-relaxed"></textarea>
         </div>
       </div>

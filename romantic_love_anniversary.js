@@ -1,7 +1,7 @@
 (function ensureConfettiSupport() {
       if (typeof window.confetti === 'undefined') {
         const fallbackConfetti = function(options = {}) {
-          const colors = options.colors || ['#ff2a70', '#fcd34d', '#ffffff', '#ff85a2'];
+          const colors = options.colors || ['#60a5fa', '#fcd34d', '#ffffff', '#a78bfa'];
           const count = options.particleCount || 45;
           const originY = options.origin && options.origin.y !== undefined ? options.origin.y : 0.6;
           const originX = options.origin && options.origin.x !== undefined ? options.origin.x : 0.5;
@@ -48,7 +48,7 @@
         };
 
         fallbackConfetti.shapeFromText = function(opts) {
-          return { type: 'text', text: (opts && opts.text) || '❤️' };
+          return { type: 'text', text: (opts && opts.text) || '🎉' };
         };
 
         window.confetti = fallbackConfetti;
@@ -56,42 +56,37 @@
     })();
 
 /* -------------------------------------------------------------
-       1. DATA & STATE MANAGEMENT
+   1. FRIENDSHIP DATA & STATE MANAGEMENT
     -------------------------------------------------------------- */
     const DEFAULT_PHOTOS = [
       {
         url: '1.jpg',
-        title: 'HEO CON',
-        caption: 'YÊU HEO CON'
+        title: 'BẠN TỚ',
+        caption: 'Bảy năm cùng nhau tạo nên thật nhiều kỷ niệm đáng nhớ.'
       },
       {
         url: '2.jpg',
-        title: 'VŨ TRỤ',
-        caption: 'YÊU VŨ TRỤ CỦA ANH'
+        title: 'BẠN TỚ',
+        caption: 'Cảm ơn cậu luôn lắng nghe và ở bên tớ.'
       },
       {
         url: '3.jpg',
-        title: 'MẶT TRỜI',
-        caption: ' YÊU MẶT TRỜI NHỎ'
+        title: 'BẠN TỚ',
+        caption: 'Những ngày vui hơn khi có một người bạn như cậu.'
       },
       {
         url: '4.jpg',
-        title: 'BÉ BỰ',
-        caption: 'YÊU BÉ BỰ NHA'
-      },
-      {
-        url: '5.jpg',
-        title: 'EM',
-        caption: 'ANH YÊU EM NHIỀU LẮM'
+        title: 'BẠN TỚ',
+        caption: 'Từ chuyện nhỏ nhặt đến ngày đặc biệt, luôn có cậu.'
       }
     ];
 
     let photos = DEFAULT_PHOTOS;
-    let partnerName = localStorage.getItem('partner_name') || 'Gửi Em, Cả Thế Giới Của Anh';
-    let loveLetterContent = localStorage.getItem('partner_letter') || 
-`Gửi em - công chúa nhỏ đáng yêu nhất trần đời,\n\nCảm ơn em đã đến bên anh, giúp anh luôn hạnh phúc, luôn đồng hành với anh trong những ngày tháng qua. Anh biết anh không đủ tốt luôn làm em phải khó chịu, lo lắng, buồn phiền, nhưng anh sẽ luôn ở đây, cùng em trải qua, nắm chặt tay em và yêu thương em nhiều hơn mỗi ngày. Mãi yêu em! ❤️`;
+    let partnerName = localStorage.getItem('friendship_name') || 'Gửi người bạn thân nhất';
+    let loveLetterContent = localStorage.getItem('friendship_message') ||
+`Gửi cậu, người bạn thân đã đồng hành cùng tớ suốt 7 năm qua,\n\nCảm ơn cậu vì luôn lắng nghe, sẻ chia và ở bên tớ qua bao chuyện vui buồn. Những kỷ niệm giản dị bên cậu đã làm những năm tháng vừa qua trở nên thật đặc biệt.\n\nMong rằng chúng ta sẽ còn cùng nhau tạo thêm nhiều kỷ niệm đẹp, luôn chân thành và đồng hành thật lâu nhé. Tớ rất trân trọng tình bạn này. Chúc mừng 7 năm tình bạn!`;
 
-    let loveStartDate = localStorage.getItem('anniversary_start') || '2026-02-22';
+    let friendshipStartDate = localStorage.getItem('friendship_start') || '2019-01-11';
 
     /* -------------------------------------------------------------
        2. MP3 SOUNDTRACK & WEB AUDIO EFFECTS
@@ -240,7 +235,7 @@
 
       elapsedHold = 0;
       scanRipple.classList.remove('hidden');
-      lockStatusText.textContent = "Đang nhận diện nhịp tim yêu thương...";
+      lockStatusText.textContent = "Đang mở những kỷ niệm tình bạn...";
       lockStatusText.classList.remove('text-pink-300');
       lockStatusText.classList.add('text-amber-300');
 
@@ -270,7 +265,7 @@
         elapsedHold = 0;
         progressCircle.style.strokeDashoffset = CIRCUMFERENCE;
         scanRipple.classList.add('hidden');
-        lockStatusText.textContent = "Chạm & giữ trái tim 1.5s";
+        lockStatusText.textContent = "Chạm & giữ biểu tượng tình bạn 1.5s";
         lockStatusText.classList.remove('text-amber-300');
         lockStatusText.classList.add('text-pink-300');
       }
@@ -303,7 +298,7 @@
             particleCount: 70,
             spread: 80,
             origin: { y: 0.6 },
-            colors: ['#ff2a70', '#fcd34d', '#ffffff']
+            colors: ['#60a5fa', '#fcd34d', '#ffffff', '#a78bfa']
           });
         }
       } catch (err) {
@@ -358,7 +353,7 @@
             <!-- Overlay Content -->
             <div class="absolute bottom-0 inset-x-0 p-6 z-20 flex flex-col gap-1.5">
               <span class="text-[11px] font-cinematic font-bold tracking-widest text-amber-300 uppercase">
-                ĐỒ CON HEO 0${index + 1}
+                KỶ NIỆM 0${index + 1}
               </span>
               <h3 class="text-2xl font-serif-lux font-bold text-white drop-shadow-md">
                 ${item.title}
@@ -454,13 +449,13 @@
           loaded.push({
             url: event.target.result,
             title: `HEO CON ƠI #${idx + 1}`,
-            caption: 'ANH YÊU EM NHIỀU LẮM'
+            caption: 'Cảm ơn cậu vì những kỷ niệm thật vui!'
           });
           if (loaded.length === files.length) {
             photos = loaded;
             renderSlidesAndBars();
             setSlide(0);
-            confetti({ particleCount: 40, spread: 60 });
+            confetti({ particleCount: 40, spread: 60, colors: ['#60a5fa', '#fcd34d', '#ffffff', '#a78bfa'] });
           }
         };
         reader.readAsDataURL(file);
@@ -486,7 +481,7 @@
     }
 
     /* -------------------------------------------------------------
-       5. PHASE 3: ETERNAL LOVE LETTER & TYPEWRITER EFFECT
+       5. PHASE 3: FRIENDSHIP MESSAGE & TYPEWRITER EFFECT
     -------------------------------------------------------------- */
     const typedLoveText = document.getElementById('typedLoveText');
     const typingCaret = document.getElementById('typingCaret');
@@ -532,28 +527,26 @@
         playRomanticPianoNote(f, i * 0.12, 2.5, 0.12);
       });
 
-      // Confetti Hearts Storm (guarded)
+      // Friendship celebration confetti
       try {
         if (typeof confetti === 'function') {
-          const heartShape = confetti.shapeFromText ? confetti.shapeFromText({ text: '❤️' }) : null;
           confetti({
-            shapes: heartShape ? [heartShape] : undefined,
-            scalar: 2.2,
             particleCount: 50,
             spread: 100,
-            origin: { y: 0.6 }
+            origin: { y: 0.6 },
+            colors: ['#60a5fa', '#fcd34d', '#ffffff', '#a78bfa']
           });
         }
       } catch (err) {
-        console.warn('Heart explosion confetti skipped safely:', err);
+        console.warn('Friendship confetti skipped safely:', err);
       }
 
-      // Spawn floating kiss emojis
+      // Add a small friendship celebration
       for (let i = 0; i < 8; i++) {
         setTimeout(() => {
           const rx = window.innerWidth / 2 + (Math.random() * 240 - 120);
           const ry = window.innerHeight * 0.6 + (Math.random() * 100 - 50);
-          createTapSparkle(rx, ry, '💋');
+          createTapSparkle(rx, ry, '🎉');
         }, i * 90);
       }
     });
@@ -600,18 +593,18 @@
       if (inputPartnerName.value.trim()) partnerName = inputPartnerName.value.trim();
       if (inputTextLetter.value.trim()) loveLetterContent = inputTextLetter.value.trim();
 
-      localStorage.setItem('partner_name', partnerName);
-      localStorage.setItem('partner_letter', loveLetterContent);
+      localStorage.setItem('friendship_name', partnerName);
+      localStorage.setItem('friendship_message', loveLetterContent);
 
       editLetterModal.classList.add('hidden');
       editLetterModal.classList.remove('flex');
 
       startLetterTypewriter();
-      confetti({ particleCount: 30, spread: 60 });
+      confetti({ particleCount: 30, spread: 60, colors: ['#60a5fa', '#fcd34d', '#ffffff', '#a78bfa'] });
     });
 
     /* -------------------------------------------------------------
-       7. REALTIME LOVE TIMER CALCULATION
+       7. REALTIME FRIENDSHIP TIMER CALCULATION
     -------------------------------------------------------------- */
     const counterDays = document.getElementById('counterDays');
     const counterHours = document.getElementById('counterHours');
@@ -619,7 +612,7 @@
     const counterSeconds = document.getElementById('counterSeconds');
 
     function updateCounter() {
-      const start = new Date(loveStartDate).getTime();
+      const start = new Date(`${friendshipStartDate}T00:00:00`).getTime();
       const now = new Date().getTime();
       const diff = Math.max(0, now - start);
 
@@ -662,7 +655,7 @@
         this.opacity = Math.random() * 0.6 + 0.2;
         this.rotation = Math.random() * 360;
         this.rotSpeed = Math.random() * 1.5 - 0.75;
-        this.isHeart = Math.random() > 0.45;
+        this.isStar = Math.random() > 0.45;
       }
       update() {
         this.y -= this.speedY;
@@ -676,13 +669,20 @@
         ctx.rotate((this.rotation * Math.PI) / 180);
         ctx.globalAlpha = this.opacity;
 
-        if (this.isHeart) {
-          ctx.fillStyle = '#ff2a70';
+        if (this.isStar) {
+          ctx.fillStyle = '#60a5fa';
           ctx.beginPath();
-          const s = this.size * 0.45;
-          ctx.moveTo(0, 0);
-          ctx.bezierCurveTo(-s, -s, -s * 1.5, s * 0.5, 0, s * 1.5);
-          ctx.bezierCurveTo(s * 1.5, s * 0.5, s, -s, 0, 0);
+          const outerRadius = this.size * 0.35;
+          const innerRadius = outerRadius * 0.45;
+          for (let point = 0; point < 10; point++) {
+            const radius = point % 2 === 0 ? outerRadius : innerRadius;
+            const angle = (point * Math.PI) / 5 - Math.PI / 2;
+            const x = Math.cos(angle) * radius;
+            const y = Math.sin(angle) * radius;
+            if (point === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.closePath();
           ctx.fill();
         } else {
           // Starlight dust
@@ -718,7 +718,7 @@
       if (!x || !y) return;
       const el = document.createElement('div');
       el.className = 'tap-sparkle text-2xl pointer-events-none select-none';
-      const emojis = ['💖', '✨', '🌸', '🌹', '🥰'];
+      const emojis = ['🤝', '✨', '🌟', '🎉', '😊'];
       el.textContent = emoji || emojis[Math.floor(Math.random() * emojis.length)];
       el.style.left = `${x}px`;
       el.style.top = `${y}px`;
