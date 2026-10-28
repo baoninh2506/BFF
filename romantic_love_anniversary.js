@@ -98,6 +98,7 @@
     -------------------------------------------------------------- */
     let audioCtx = null;
     let isMusicPlaying = false;
+    let musicStartPending = false;
 
     // Harmonic Piano Note Synthesizer with natural envelope & reverb feel
     function playRomanticPianoNote(freq, timeOffset = 0, duration = 3.5, velocity = 0.2) {
@@ -149,17 +150,41 @@
     const backgroundMusic = document.getElementById('backgroundMusic');
     const audioTrackName = document.getElementById('audioTrackName');
     function startRomanticSoundtrack() {
-      if (isMusicPlaying) return;
-
-      isMusicPlaying = true;
-      document.getElementById('audioIndicator').classList.remove('hidden');
+      const audioIndicator = document.getElementById('audioIndicator');
       audioTrackName.textContent = 'Nhạc kỷ niệm';
-      backgroundMusic.play().catch(error => {
-        isMusicPlaying = false;
-        audioTrackName.textContent = 'Không phát được music.mp3';
-        console.warn('Không thể phát music.mp3. Hãy kiểm tra file và thử mở bằng Live Server.', error);
-      });
+      audioIndicator.classList.remove('hidden');
+      backgroundMusic.muted = false;
+
+      if (!backgroundMusic.paused) {
+        isMusicPlaying = true;
+        return;
+      }
+
+      const playAttempt = backgroundMusic.play();
+      if (playAttempt) {
+        playAttempt.then(() => {
+          isMusicPlaying = true;
+          audioTrackName.textContent = 'Nhạc kỷ niệm';
+        }).catch(error => {
+          isMusicPlaying = false;
+          audioTrackName.textContent = 'Chạm để bật nhạc';
+          console.warn('Không thể phát music.mp3. Hãy kiểm tra file và chạm biểu tượng nhạc để thử lại.', error);
+        });
+      } else {
+        isMusicPlaying = true;
+      }
     }
+
+    document.getElementById('audioIndicator').addEventListener('click', () => {
+      if (isMusicPlaying && !backgroundMusic.paused) {
+        backgroundMusic.pause();
+        isMusicPlaying = false;
+        audioTrackName.textContent = 'Chạm để bật nhạc';
+        return;
+      }
+
+      startRomanticSoundtrack();
+    });
 
     function fadeOutMusic() {
       isMusicPlaying = false;
@@ -193,6 +218,22 @@
 
     function handleHoldStart(e) {
       if (e) e.preventDefault();
+      if (!isMusicPlaying && backgroundMusic.paused && !musicStartPending) {
+        backgroundMusic.muted = true;
+        const playAttempt = backgroundMusic.play();
+        if (playAttempt) {
+          musicStartPending = true;
+          playAttempt.then(() => {
+            musicStartPending = false;
+            if (isMusicPlaying) backgroundMusic.muted = false;
+          }).catch(error => {
+            musicStartPending = false;
+            backgroundMusic.muted = false;
+            console.warn('Không thể khởi chạy music.mp3 từ thao tác chạm.', error);
+          });
+        }
+      }
+
       // Unlock audio early via user interaction
       if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
       if (audioCtx.state === 'suspended') audioCtx.resume();
@@ -221,6 +262,11 @@
     function handleHoldEnd() {
       if (elapsedHold < HOLD_TIME_MS) {
         clearInterval(holdTimer);
+        if (!isMusicPlaying) {
+          backgroundMusic.pause();
+          backgroundMusic.currentTime = 0;
+          backgroundMusic.muted = false;
+        }
         elapsedHold = 0;
         progressCircle.style.strokeDashoffset = CIRCUMFERENCE;
         scanRipple.classList.add('hidden');

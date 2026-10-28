@@ -21,13 +21,13 @@
   <div id="portalFlash" class="portal-flash"></div>
 
   <!-- Audio State Indicator -->
-  <div id="audioIndicator" class="fixed top-4 right-4 z-50 glass-pill px-3 py-1.5 rounded-full flex items-center gap-2 border border-pink-500/30 text-[11px] font-medium hidden">
+  <button id="audioIndicator" type="button" aria-label="Bật hoặc tắt nhạc" class="fixed top-4 right-4 z-50 glass-pill px-3 py-1.5 rounded-full flex items-center gap-2 border border-pink-500/30 text-[11px] font-medium hidden">
     <span class="relative flex h-2 w-2">
       <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
       <span class="relative inline-flex rounded-full h-2 w-2 bg-rose-500"></span>
     </span>
     <span id="audioTrackName">Nhạc kỷ niệm</span>
-  </div>
+  </button>
   <audio id="backgroundMusic" src="music.mp3" preload="auto" loop></audio>
 
   <!-- =========================================================================
